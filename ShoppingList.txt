@@ -3,6 +3,6 @@ Bread
 Bananas
 Eggs
 
-vegetables
+Vegetables
 rice
 apple
