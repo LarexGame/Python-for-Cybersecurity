@@ -4,11 +4,14 @@
 
 # Get tow numbers from user
 
-first_num = int(input("First number = "))
+first_num = float(input("First number = "))
 
-second_num = int(input("Second number = "))
+second_num = float(input("Second number = "))
 
 
 # Add numbers and print answer
 
 print(f"{first_num} + {second_num} = ", first_num + second_num)
+print(f"{first_num} - {second_num} = ", first_num - second_num)
+print(f"{first_num} * {second_num} = ", first_num * second_num)
+print(f"{first_num} / {second_num} = ", first_num / second_num)
