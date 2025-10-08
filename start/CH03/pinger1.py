@@ -3,7 +3,7 @@
 # By Rene Garcia 10/08
 
 #Import things
-Import os 
+import os 
 
 #Assign IP to a Variable
 ip_addr = "127.0.0.1"
