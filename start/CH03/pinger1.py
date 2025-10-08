@@ -4,12 +4,21 @@
 
 #Import things
 import os 
+import platform
 
 #Assign IP to a Variable
 ip_addr = "127.0.0.1"
 
-#Build ping command
-ping_cmd = "ping -c 1 -w 2 " + ip_addr + "> /dev/null 2>&1"
+#Find Current OS
+current_os = platform.system().lower()
+
+# If Windows
+if current_os == "Windows":
+    ping_cmd = "ping -n 1 -w 2 " + ip_addr + " > nul" 
+else:
+    ping_cmd = "ping -c 1 -w 2 " + ip_addr + "> /dev/null 2>&1"
+
+print(ping_cmd)
 
 #Execute ping command
 exit_code = os.system(ping_cmd)
