@@ -16,7 +16,7 @@ exit_code = os.system(ping_cmd)
 
 #Print results
 print(exit_code)
-if exit_code = 0:
+if exit_code == 0:
     print(f"{ip_addr} is online")
 else:
     print(f"{ip_addr} is NOT online")
