@@ -7,25 +7,28 @@ import os
 import platform
 
 #Assign IP to a Variable
-ip_addr = "127.0.0.1"
+ip_prefix = "192.168.0."
 
-#Find Current OS
-current_os = platform.system().lower()
+# Start a Loop
+for final_octet in range(254):
+    #Build IP Address
+    ip_addr = ip_prefix + str(final_octet + 1)
 
-# If Windows
-if current_os == "Windows":
-    ping_cmd = "ping -n 1 -w 2 " + ip_addr + " > nul" 
-else:
-    ping_cmd = "ping -c 1 -w 2 " + ip_addr + "> /dev/null 2>&1"
+    #Find Current OS
+    current_os = platform.system().lower()
 
-print(ping_cmd)
+    # If Windows
+    if current_os == "Windows":
+        ping_cmd = "ping -n 1 -w 2 " + ip_addr + " > nul" 
+    else:
+        ping_cmd = "ping -c 1 -w 2 " + ip_addr + "> /dev/null 2>&1"
 
-#Execute ping command
-exit_code = os.system(ping_cmd)
+    #Execute ping command
+    exit_code = os.system(ping_cmd)
 
-#Print results
-print(exit_code)
-if exit_code == 0:
-    print(f"{ip_addr} is online")
-else:
-    print(f"{ip_addr} is NOT online")
+    #Print results
+    #print(exit_code)
+    if exit_code == 0:
+        print(f"{ip_addr} is online")
+    else:
+        print(f"{ip_addr} is NOT online")
