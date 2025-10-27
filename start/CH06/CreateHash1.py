@@ -1,3 +1,4 @@
 #!/usr/bin/env python3
 # Script that hashes a password
-# By 
+# By Garcia 10/27
+
