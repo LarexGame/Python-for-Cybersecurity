@@ -1,0 +1,38 @@
+from passlib.hash import sha512_crypt
+
+def load_shadow_file(filename):
+    users = {}
+    with open(filename, 'r') as f:
+        for line in f:
+            parts = line.strip().split(':')
+            username = parts[0]
+            hash = parts[1]
+            if hash.startswith('$6$'):  # SHA-512
+                users[username] = hash
+    return users
+
+def crack_passwords(shadow_file, password_file):
+    users = load_shadow_file(shadow_file)
+    cracked = {}
+
+    with open(password_file, 'r', encoding='utf-8', errors='ignore') as f:
+        passwords = [line.strip() for line in f]
+
+    for username, full_hash in users.items():
+        for password in passwords:
+            try:
+                if sha512_crypt.verify(password, full_hash):
+                    cracked[username] = password
+                    print(f"[+] Cracked {username}: {password}")
+                    break
+            except Exception:
+                continue
+
+    return cracked
+
+# Run the script
+if __name__ == "__main__":
+    shadow_path = "shadow.txt"
+    password_path = "top10.txt"  # Use your actual filename here
+    results = crack_passwords(shadow_path, password_path)
+    print(f"\nTotal cracked: {len(results)}")
