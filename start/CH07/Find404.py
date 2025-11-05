@@ -27,9 +27,7 @@ while True:
         if "administrator" in line:
             if "%" in line:
                 # Print line
-                print(line)
-            
-            
+                print(line)            
         
 # Close File
 f.close()
