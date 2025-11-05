@@ -24,7 +24,7 @@ with open(file_path, "r") as f:
     log_lines = f.readlines()
 
 # Setup regex pattern
-search_pattern = r"\s(\d\d\d)\s"
+search_pattern = r"^(\d+\.\d+\.\d+\.\d+)\ "
 result_dict = {}
 
 
