@@ -1,19 +1,12 @@
-import os
+import requests
 
-# Obtener la ruta absoluta del script
-script_path = os.path.abspath(__file__)
-script_dir = os.path.dirname(script_path)
+url = "https://icanhazdadjoke.com/"
+headers = {"Accept": "application/json"}
 
-# Construir la ruta del archivo
-file_path = os.path.join(script_dir, "shadow.txt")
+response = requests.get(url, headers=headers)
 
-# Abrir el archivo en modo lectura
-with open(file_path, "r") as f:
-    lines = f.readlines()
-
-# Filtrar y mostrar solo los hashes SHA-512 (identificador $6$)
-for line in lines:
-    parts = line.strip().split(":")
-    if len(parts) > 1 and parts[1].startswith("$6$"):
-        print(f"User: {parts[0]}")
-        print(f"Hash SHA-512: {parts[1]}\n")
+if response.status_code == 200:
+    joke = response.json().get("joke")
+    print(joke)
+else:
+    print("Failed to retrieve a joke. Status code:", response.status_code)
