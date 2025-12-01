@@ -3,6 +3,7 @@
 
 # Import tkinter
 import tkinter
+from tkinter import messagebox
 
 def button_clicked():
     tkinter.Label(
@@ -16,6 +17,8 @@ def button_clicked():
         fg = "lightyellow",
         bg = "darkred"
     )
+    # Show messagebox
+    messagebox.askyesnocancel("System ERROR", "WARNING!! DO NOT PUSH THAT!")
 
 # Create the GUI main window
 root = tkinter.Tk()
